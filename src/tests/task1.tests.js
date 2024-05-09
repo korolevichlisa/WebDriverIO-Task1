@@ -5,6 +5,7 @@ describe('Task 1', () => {
         await $('input#loginform-username').setValue('Epam-user')
         await $('input#loginform-password').setValue('epam_test_12345')
         await $('button.btn').click()
+        expect(await $('div.info-top h1').getText()).toHaveText("Epam-user's Pastebin") 
     })
     
     it('creating new paste', async () => { 
@@ -16,5 +17,7 @@ describe('Task 1', () => {
         await $('//button[text()="Create New Paste"]').click()
     
         expect(await $('div.info-top h1').getText()).toEqual('helloweb')
+        expect(await $('textarea.textarea').getText()).toEqual('Hello from WebDriver')
+        expect(await $('div.source').getText()).toEqual('Hello from WebDriver')
     })
 })
